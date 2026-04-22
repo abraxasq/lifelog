@@ -11,6 +11,14 @@ plugins:
 author:
   name: abraxasqUx
 
+header_pages:
+  - tags/stocks.md
+  - tags/ux.md
+  - tags/poetry.md
+  - tags/notes.md
+  - tags/tools.md
+  - about.md
+
 exclude:
   - README.md
   - "*.sh"
