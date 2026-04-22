@@ -1,6 +1,7 @@
 title: lifelog
 description: A personal log.
 theme: minima
+future: true
 
 minima:
   skin: dark
