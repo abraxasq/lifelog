@@ -1,0 +1,16 @@
+title: lifelog
+description: A personal log.
+theme: minima
+
+minima:
+  skin: dark
+
+plugins:
+  - jekyll-feed
+
+author:
+  name: abraxasqUx
+
+exclude:
+  - README.md
+  - "*.sh"
