@@ -17,7 +17,6 @@ header_pages:
   - tags/ux.md
   - tags/poetry.md
   - tags/notes.md
-  - tags/tools.md
   - about.md
 
 exclude:
