@@ -3,16 +3,14 @@
 
 @import "minima";
 
-// ─── SAP Fiori 3 Segmented Button ────────────────────────────────────────────
-// Ref: SAP Fundamental Styles fd-segmented-button / Quartz theme tokens
+// ─── Segmented Button (Fiori 3 layout, monochrome) ───────────────────────────
 
-$fiori-primary:      #0854a0;
-$fiori-primary-hover:#e5f0ff;
-$fiori-border:       #0854a0;
-$fiori-text:         #0854a0;
-$fiori-text-active:  #ffffff;
-$fiori-radius:       0.25rem;
-$fiori-height:       2rem;
+$seg-border:  #89919a;
+$seg-text:    #32363a;
+$seg-hover:   #f5f5f5;
+$seg-active:  #32363a;
+$seg-radius:  0.25rem;
+$seg-height:  2rem;
 
 .stock-filter-group {
   display: inline-flex;
@@ -20,15 +18,15 @@ $fiori-height:       2rem;
 }
 
 .stock-filter-btn {
-  height: $fiori-height;
+  height: $seg-height;
   padding: 0 0.75rem;
   font-size: 0.875rem;
   font-family: "72", "72full", $base-font-family;
   font-weight: normal;
-  line-height: calc(#{$fiori-height} - 2px);
-  color: $fiori-text;
+  line-height: calc(#{$seg-height} - 2px);
+  color: $seg-text;
   background: #ffffff;
-  border: 1px solid $fiori-border;
+  border: 1px solid $seg-border;
   border-right: none;
   cursor: pointer;
   white-space: nowrap;
@@ -36,27 +34,28 @@ $fiori-height:       2rem;
   transition: background 0.1s;
 
   &:first-child {
-    border-radius: $fiori-radius 0 0 $fiori-radius;
+    border-radius: $seg-radius 0 0 $seg-radius;
   }
 
   &:last-child {
-    border-right: 1px solid $fiori-border;
-    border-radius: 0 $fiori-radius $fiori-radius 0;
+    border-right: 1px solid $seg-border;
+    border-radius: 0 $seg-radius $seg-radius 0;
   }
 
   &:hover:not(.active) {
-    background: $fiori-primary-hover;
+    background: $seg-hover;
   }
 
   &:focus-visible {
-    outline: 0.125rem solid $fiori-border;
+    outline: 0.125rem solid $seg-border;
     outline-offset: -0.125rem;
     z-index: 1;
   }
 
   &.active {
-    background: $fiori-primary;
-    color: $fiori-text-active;
+    background: $seg-active;
+    color: #ffffff;
+    border-color: $seg-active;
     position: relative;
     z-index: 1;
   }
