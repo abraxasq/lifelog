@@ -1,6 +1,5 @@
 ---
-layout: tag
-title: STOCKS
-tag: STOCKS
+layout: stocks
+title: STOCK
 permalink: /tags/stocks/
 ---

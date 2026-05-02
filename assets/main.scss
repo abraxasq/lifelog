@@ -3,58 +3,35 @@
 
 @import "minima";
 
-// ─── Dropdown nav ─────────────────────────────────────────────────────────────
+// ─── Stock filter button group ────────────────────────────────────────────────
 
-.nav-dropdown {
-  position: relative;
-  display: inline-block;
-
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 100;
-    list-style: none;
-    margin: 0;
-    padding: 4px 0;
-    min-width: 110px;
-    background-color: $background-color;
-    border: 1px solid $grey-color-light;
-    border-radius: 3px;
-    white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  &:hover > .dropdown-menu,
-  &:focus-within > .dropdown-menu {
-    display: block;
-  }
-
-  .dropdown-item {
-    display: block;
-    padding: 5px 14px;
-    font-size: $small-font-size;
-    color: $text-color;
-    margin-right: 0 !important;
-
-    &:hover {
-      background-color: $grey-color-light;
-    }
-  }
+.stock-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
 }
 
-@include media-query($on-palm) {
-  .nav-dropdown {
-    display: block;
+.stock-filter-btn {
+  padding: 4px 14px;
+  font-size: $small-font-size;
+  font-family: $base-font-family;
+  color: $grey-color-dark;
+  background: transparent;
+  border: 1px solid $grey-color-light;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 
-    .dropdown-menu {
-      display: block;
-      position: static;
-      border: none;
-      box-shadow: none;
-      padding: 0 0 0 16px;
-    }
+  &:hover {
+    border-color: $brand-color;
+    color: $brand-color;
+  }
+
+  &.active {
+    background: $brand-color;
+    border-color: $brand-color;
+    color: #fff;
   }
 }
 

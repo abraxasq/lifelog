@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+<div class="home">
+  <h1 class="page-heading">{{ page.title }}</h1>
+
+  <div class="stock-filter-group">
+    <button class="stock-filter-btn active" data-filter="all">전체</button>
+    <button class="stock-filter-btn" data-filter="STOCK-탐색">탐색</button>
+    <button class="stock-filter-btn" data-filter="STOCK-운영">운영</button>
+    <button class="stock-filter-btn" data-filter="STOCK-현인">현인</button>
+    <button class="stock-filter-btn" data-filter="STOCK-시황">시황</button>
+  </div>
+
+  {% assign posts_a = site.posts | where_exp: "post", "post.tags contains 'STOCK-탐색'" %}
+  {% assign posts_b = site.posts | where_exp: "post", "post.tags contains 'STOCK-운영'" %}
+  {% assign posts_c = site.posts | where_exp: "post", "post.tags contains 'STOCK-현인'" %}
+  {% assign posts_d = site.posts | where_exp: "post", "post.tags contains 'STOCK-시황'" %}
+  {% assign all_stock_posts = posts_a | concat: posts_b | concat: posts_c | concat: posts_d | sort: "date" | reverse %}
+
+  {% if all_stock_posts.size > 0 %}
+    <ul class="post-list" id="stock-post-list">
+      {% for post in all_stock_posts %}
+        {% assign post_subtag = "" %}
+        {% for tag in post.tags %}
+          {% if tag contains "STOCK-" %}
+            {% assign post_subtag = tag %}
+          {% endif %}
+        {% endfor %}
+        <li data-subtag="{{ post_subtag }}">
+          <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <h3><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>아직 STOCK 게시글이 없습니다.</p>
+  {% endif %}
+</div>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.stock-filter-btn');
+  var items   = document.querySelectorAll('#stock-post-list li');
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      buttons.forEach(function (b) { b.classList.remove('active'); });
+      this.classList.add('active');
+
+      var filter = this.getAttribute('data-filter');
+      items.forEach(function (li) {
+        li.style.display =
+          (filter === 'all' || li.getAttribute('data-subtag') === filter)
+            ? ''
+            : 'none';
+      });
+    });
+  });
+})();
+</script>
