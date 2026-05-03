@@ -1,14 +1,187 @@
 ---
 ---
 
+// ── IGDS: Override minima !default variables before import ───────────────────
+
+$base-font-family:  "Source Serif 4", Georgia, "Times New Roman", serif;
+$base-font-size:    16px;
+$base-line-height:  1.55;
+$text-color:        #2C2C2C;   // --ink-soft
+$background-color:  #FAF7F2;   // --paper-white
+$brand-color:       #8B6F3F;   // --data-secondary (ochre) — links
+$grey-color:        #6B6660;   // --ink-muted
+$grey-color-light:  #D8D2C5;   // --paper-rule
+$grey-color-dark:   #2C2C2C;   // --ink-soft
+$spacing-unit:      32px;
+
 @import "minima";
 
-// ─── Segmented Button (Fiori 3 layout, monochrome) ───────────────────────────
+// ── IGDS CSS Custom Properties ────────────────────────────────────────────────
 
-$seg-border:  #89919a;
-$seg-text:    #32363a;
-$seg-hover:   #f5f5f5;
-$seg-active:  #32363a;
+:root {
+  --ink-black:   #1A1A1A;
+  --ink-soft:    #2C2C2C;
+  --ink-muted:   #6B6660;
+  --ink-light:   #A8A298;
+  --paper-white: #FAF7F2;
+  --paper-cream: #F4EFE6;
+  --paper-rule:  #D8D2C5;
+  --paper-line:  #E8E2D5;
+}
+
+// ── Type families ─────────────────────────────────────────────────────────────
+
+$display-font: "Playfair Display", Georgia, "Times New Roman", serif;
+$mono-font:    "JetBrains Mono", "Courier New", monospace;
+
+// ── Site header ───────────────────────────────────────────────────────────────
+
+.site-header {
+  background-color: var(--paper-white);
+  border-top: none;
+  border-bottom: 2px solid var(--ink-black);
+  min-height: 52px;
+}
+
+.site-title,
+.site-title:visited {
+  font-family: $display-font;
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--ink-black);
+}
+
+.site-nav .page-link {
+  font-family: $mono-font;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+
+  &:hover {
+    color: var(--ink-black);
+    text-decoration: none;
+  }
+}
+
+// ── Page heading ──────────────────────────────────────────────────────────────
+
+.page-heading {
+  font-family: $display-font;
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: -0.015em;
+  color: var(--ink-black);
+  border-bottom: 2px solid var(--ink-black);
+  padding-bottom: 10px;
+  margin-bottom: 24px;
+}
+
+// ── Post list ─────────────────────────────────────────────────────────────────
+
+.post-list {
+  > li {
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--paper-rule);
+
+    h3 {
+      display: inline;
+      font-family: $display-font;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+}
+
+.post-meta {
+  font-family: $mono-font;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-right: 10px;
+}
+
+.post-link {
+  color: var(--ink-black);
+
+  &:hover {
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+}
+
+// ── Post content ──────────────────────────────────────────────────────────────
+
+.post-title {
+  font-family: $display-font;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink-black);
+}
+
+.post-content {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $display-font;
+    color: var(--ink-black);
+    letter-spacing: -0.01em;
+  }
+
+  p, li {
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  // Rule-weight borders for blockquotes
+  blockquote {
+    border-left: 2px solid var(--ink-black);
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+
+  // Tabular code
+  pre, code {
+    font-family: $mono-font;
+    font-size: 0.8125rem;
+    background: var(--paper-cream);
+    border: 1px solid var(--paper-rule);
+    border-radius: 2px;
+  }
+}
+
+// ── Footer ────────────────────────────────────────────────────────────────────
+
+.site-footer {
+  background-color: var(--paper-cream);
+  border-top: 1px solid var(--paper-rule);
+  color: var(--ink-muted);
+
+  .footer-heading {
+    font-family: $mono-font;
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  a {
+    color: var(--ink-soft);
+
+    &:hover {
+      color: var(--ink-black);
+    }
+  }
+}
+
+// ── Segmented button (Fiori layout · IGDS ink/paper palette) ─────────────────
+
+$seg-border:  #D8D2C5;  // --paper-rule
+$seg-text:    #2C2C2C;  // --ink-soft
+$seg-hover:   #F4EFE6;  // --paper-cream
+$seg-active:  #1A1A1A;  // --ink-black
 $seg-radius:  0.25rem;
 $seg-height:  2rem;
 
@@ -20,12 +193,14 @@ $seg-height:  2rem;
 .stock-filter-btn {
   height: $seg-height;
   padding: 0 0.75rem;
-  font-size: 0.875rem;
-  font-family: "72", "72full", $base-font-family;
-  font-weight: normal;
+  font-family: $mono-font;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   line-height: calc(#{$seg-height} - 2px);
   color: $seg-text;
-  background: #ffffff;
+  background: var(--paper-white);
   border: 1px solid $seg-border;
   border-right: none;
   cursor: pointer;
@@ -33,21 +208,16 @@ $seg-height:  2rem;
   text-align: center;
   transition: background 0.1s;
 
-  &:first-child {
-    border-radius: $seg-radius 0 0 $seg-radius;
-  }
-
-  &:last-child {
+  &:first-child { border-radius: $seg-radius 0 0 $seg-radius; }
+  &:last-child  {
     border-right: 1px solid $seg-border;
     border-radius: 0 $seg-radius $seg-radius 0;
   }
 
-  &:hover:not(.active) {
-    background: $seg-hover;
-  }
+  &:hover:not(.active) { background: $seg-hover; }
 
   &:focus-visible {
-    outline: 0.125rem solid $seg-border;
+    outline: 0.125rem solid $seg-active;
     outline-offset: -0.125rem;
     z-index: 1;
   }
@@ -58,25 +228,5 @@ $seg-height:  2rem;
     border-color: $seg-active;
     position: relative;
     z-index: 1;
-  }
-}
-
-// ─── Compact post list ────────────────────────────────────────────────────────
-
-.post-list > li {
-  margin-bottom: 6px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid $grey-color-light;
-
-  h3 {
-    display: inline;
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 0;
-  }
-
-  .post-meta {
-    font-size: 0.78rem;
-    margin-right: 8px;
   }
 }
